@@ -12,14 +12,13 @@ class TodoListView extends Component {
     handlePop() {
       this.props.todoList.pop()
     }
-    handleDelete(id) {
-      // console.log(id)
-      // this.props.todoList.remove(id)
+    handleDelete(index) {
+      this.props.todoList.remove(index)
     }
     render() {
         return <div>
             <ul>
-                {this.props.todoList.todos.map(todo =><TodoView todo={todo} key={todo.id} deleteFunc={this.handleDelete} />)}
+                {this.props.todoList.todos.map((todo , index) =><TodoView todo={todo} key={todo.id} deleteFunc={() => this.handleDelete(index)} />)}
             </ul>
             <button onClick={this.handleClick.bind(this)}>push new todo</button>
             <button onClick={this.handlePop.bind(this)}>pop</button>
